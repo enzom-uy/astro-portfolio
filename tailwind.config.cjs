@@ -19,6 +19,12 @@ module.exports = {
       fontFamily: {
         sans: ["JetBrains Mono", ...defaultTheme.fontFamily.sans],
       },
+      keyframes: {
+        cursor: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+      },
     },
   },
   plugins: [],

@@ -1,8 +1,12 @@
 ---
 import Prompt from "../components/Prompt.astro";
 import Layout from "../layouts/Layout.astro";
+import PromptText from "../components/PromptText";
 ---
 
 <Layout title="enzom@enzomdev">
-  <Prompt client:load />
+  <div class="flex items-center gap-[0.85em]">
+    <Prompt />
+    <PromptText />
+  </div>
 </Layout>
