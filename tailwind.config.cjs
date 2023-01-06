@@ -22,8 +22,22 @@ module.exports = {
       keyframes: {
         cursor: {
           "0%": { opacity: 0 },
-          "100%": { opacity: 1 },
+          "50%": { opacity: 1 },
+          "100%": { opacity: 0 },
         },
+        type: {
+          "0%": { width: "0ch" },
+          "10%": { width: "1ch" },
+          "20%": { width: "2ch" },
+          "30%": { width: "3ch" },
+          "40%": { width: "3.8ch" },
+          "50%": { width: "4.8ch" },
+          "60%": { width: "6ch" },
+        },
+      },
+      animation: {
+        blink: "cursor 1s step-end infinite",
+        type: "type .5s step-end",
       },
     },
   },
