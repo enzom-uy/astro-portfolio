@@ -2,11 +2,13 @@
 import Prompt from "../components/Prompt.astro";
 import Layout from "../layouts/Layout.astro";
 import PromptText from "../components/PromptText";
+import Test from "../components/Test";
 ---
 
 <Layout title="enzom@enzomdev">
   <div class="flex items-center gap-[0.85em]">
     <Prompt />
-    <PromptText />
+    <PromptText client:load />
   </div>
+  <Test client:load />
 </Layout>
