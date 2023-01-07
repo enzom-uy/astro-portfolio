@@ -1,5 +1,4 @@
 ---
-import Footer from "@/components/Footer.astro";
 import "@fontsource/jetbrains-mono";
 
 export interface Props {
@@ -17,12 +16,11 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body
-    class="font-sans bg-background text-foreground p-2 transition-all duration-[400ms] sm:p-6 text-sm sm:text-lg flex flex-col gap-4 min-h-screen"
+    class="font-sans bg-background text-foreground p-2 transition-all duration-[400ms] sm:p-6 text-sm sm:text-lg flex flex-col gap-4"
   >
-    <main class="min-h-[92vh]">
+    <main class="min-h-[91vh]">
       <slot />
     </main>
-    <Footer />
   </body>
   <style is:global>
     @tailwind components;
@@ -38,9 +36,11 @@ const { title } = Astro.props;
     }
     html {
       font-family: system-ui, sans-serif;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
-    body {
-      min-height: 100vh;
+    html::-webkit-scrollbar {
+      display: none;
     }
     li {
       list-style-type: disc;
