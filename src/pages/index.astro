@@ -1,14 +1,24 @@
 ---
 import Prompt from "../components/Prompt.astro";
 import Layout from "../layouts/Layout.astro";
-import PromptText from "../components/PromptText";
-import Test from "../components/Test";
+import WhoamiResponse from "@/components/WhoamiResponse";
+import Links from "@/components/Links.astro";
 ---
 
 <Layout title="enzom@enzomdev">
-  <div class="flex items-center gap-[0.85em]">
-    <Prompt />
-    <PromptText client:load />
+  <Prompt command="whoami" />
+  <div id="content" class="flex flex-col gap-2">
+    <Links />
+    <WhoamiResponse client:idle />
   </div>
-  <Test client:load />
 </Layout>
+
+<script defer>
+  const content = document.getElementById("content");
+  content.classList.add("hidden");
+  setTimeout(() => {
+    lang = "es";
+    content.classList.remove("hidden");
+    content.classList.add(`animate-show`);
+  }, 700);
+</script>

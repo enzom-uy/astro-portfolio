@@ -20,6 +20,10 @@ module.exports = {
         sans: ["JetBrains Mono", ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
+        show: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
         cursor: {
           "0%": { opacity: 0 },
           "50%": { opacity: 1 },
@@ -38,6 +42,7 @@ module.exports = {
       animation: {
         blink: "cursor 1s step-end infinite",
         type: "type .5s step-end",
+        show: "show 1s ease-in",
       },
     },
   },

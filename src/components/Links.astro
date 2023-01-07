@@ -1,0 +1,28 @@
+---
+const links = [
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/enzomdev",
+  },
+  {
+    name: "Github",
+    href: "https://www.github.com/enzom-uy",
+  },
+  {
+    name: "Twitter",
+    href: "https://www.twitter.com/enzom_uy",
+  },
+];
+---
+
+<ul class="text-lg list-disc px-6 text-green font-extrabold">
+  {
+    links.map((link) => (
+      <li>
+        <a href={link.href} target="_blank" rel="noreferrer">
+          {link.name}
+        </a>
+      </li>
+    ))
+  }
+</ul>
