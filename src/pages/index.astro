@@ -4,9 +4,6 @@ import Layout from "../layouts/Layout.astro";
 import WhoamiResponse from "@/components/WhoamiResponse.astro";
 import Links from "@/components/Links.astro";
 import Skills from "@/components/Skills.astro";
-import Footer from "@/components/Footer.astro";
-
-if (true) Astro.redirect("/en");
 ---
 
 <Layout title="enzom@enzomdev">
@@ -23,7 +20,6 @@ if (true) Astro.redirect("/en");
   const content = document.getElementById("content");
   content.classList.add("hidden");
   setTimeout(() => {
-    lang = "es";
     content.classList.remove("hidden");
     content.classList.add(`animate-show`);
   }, 900);
