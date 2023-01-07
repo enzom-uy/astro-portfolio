@@ -1,9 +1,11 @@
 ---
 interface Props {
   command: string;
+  left: string;
+  cursor?: boolean;
 }
 
-const { command } = Astro.props;
+const { command, left, cursor } = Astro.props;
 ---
 
 <div class="flex items-center gap-[0.85em]">
@@ -19,9 +21,12 @@ const { command } = Astro.props;
     >
       {command}
     </p>
-    <div
-      class="border-r-[0.63em] absolute h-[1.5rem] top-[0.12rem] left-[4.4rem] border-white animate-blink"
-    >
-    </div>
+    {
+      cursor && (
+        <div
+          class={`border-r-[0.63em] absolute h-[1.5rem] top-[0.12rem] ${left} border-white animate-blink`}
+        />
+      )
+    }
   </div>
 </div>

@@ -1,15 +1,21 @@
 ---
 import Prompt from "../components/Prompt.astro";
 import Layout from "../layouts/Layout.astro";
-import WhoamiResponse from "@/components/WhoamiResponse";
+import WhoamiResponse from "@/components/WhoamiResponse.astro";
 import Links from "@/components/Links.astro";
+import Skills from "@/components/Skills.astro";
+import Footer from "@/components/Footer.astro";
+
+if (true) Astro.redirect("/en");
 ---
 
 <Layout title="enzom@enzomdev">
-  <Prompt command="whoami" />
-  <div id="content" class="flex flex-col gap-2">
+  <Prompt command="whoami" left="left-[4.4rem]" cursor />
+  <div id="content" class="flex flex-col gap-4">
     <Links />
-    <WhoamiResponse client:idle />
+    <WhoamiResponse />
+    <Prompt command="glow skills.md" left="left-[9.4rem]" />
+    <Skills />
   </div>
 </Layout>
 
@@ -20,5 +26,5 @@ import Links from "@/components/Links.astro";
     lang = "es";
     content.classList.remove("hidden");
     content.classList.add(`animate-show`);
-  }, 700);
+  }, 900);
 </script>

@@ -1,0 +1,38 @@
+---
+const frontendSkills = [
+  "Javascript/Typescript",
+  "React/Nextjs",
+  "Astro",
+  "Tailwind",
+  "ChakraUI",
+  "HTMl, CSS, Sass",
+  "Responsive design and mobile-first approach",
+];
+
+const backendSkills = [
+  "Nodejs",
+  "Express",
+  "MySQL",
+  "MongoDB",
+  "Prisma",
+  "tRPC",
+  "REST APIs",
+];
+---
+
+<div class="flex flex-col gap-2">
+  <h1 class="font-extrabold text-green text-xl">Skills</h1>
+  <div>
+    <span class="highlight">Frontend</span>
+    <ul>
+      {frontendSkills.map((s) => <li>{s}</li>)}
+    </ul>
+  </div>
+
+  <div>
+    <span class="highlight">Backend</span>
+    <ul>
+      {backendSkills.map((s) => <li>{s}</li>)}
+    </ul>
+  </div>
+</div>
