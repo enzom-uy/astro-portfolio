@@ -7,11 +7,11 @@ import Skills from "@/components/Skills.astro";
 ---
 
 <Layout title="enzom@enzomdev">
-  <Prompt command="whoami" left="left-[4.4rem]" cursor />
+  <Prompt command="whoami" animate showCursor />
   <div id="content" class="flex flex-col gap-4">
     <Links />
     <WhoamiResponse />
-    <Prompt command="glow skills.md" left="left-[9.4rem]" />
+    <Prompt command="glow skills.md" />
     <Skills />
   </div>
 </Layout>

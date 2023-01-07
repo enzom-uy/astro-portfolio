@@ -17,7 +17,7 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body
-    class="font-sans bg-background text-foreground px-6 py-6 flex flex-col gap-4 min-h-screen"
+    class="font-sans bg-background text-foreground p-2 transition-all duration-[400ms] sm:p-6 text-sm sm:text-lg flex flex-col gap-4 min-h-screen"
   >
     <main class="min-h-[92vh]">
       <slot />
@@ -53,7 +53,7 @@ const { title } = Astro.props;
 
     @layer components {
       .highlight {
-        @apply font-bold text-yellow;
+        @apply font-semibold text-yellow;
       }
     }
   </style>

@@ -1,32 +1,31 @@
 ---
 interface Props {
   command: string;
-  left: string;
-  cursor?: boolean;
+  animate?: boolean;
+  showCursor?: boolean;
 }
 
-const { command, left, cursor } = Astro.props;
+const { command, animate, showCursor } = Astro.props;
 ---
 
-<div class="flex items-center gap-[0.85em]">
-  <div>
-    <h1 class="font-medium text-cyan text-lg">
-      enzom@enzomdev <span class="text-green">~</span>
-    </h1>
-  </div>
+<div class="w-fit text-md">
+  <div
+    class={`flex relative items-center gap-[0.85em] ${
+      showCursor && "border-r-white border-r-[0.65em] pr-2"
+    }  whitespace-nowrap overflow-x-hidden ${
+      animate && "animate-typing"
+    } w-fit`}
+  >
+    <div>
+      <h1 class="font-medium text-cyan">
+        enzom@enzomdev <span class="text-green">~</span>
+      </h1>
+    </div>
 
-  <div class="relative">
-    <p
-      class="text-lg font-medium relative animate-type overflow-x-hidden whitespace-nowrap"
-    >
-      {command}
-    </p>
-    {
-      cursor && (
-        <div
-          class={`border-r-[0.63em] absolute h-[1.5rem] top-[0.12rem] ${left} border-white animate-blink`}
-        />
-      )
-    }
+    <div class="relative">
+      <p class="font-medium">
+        {command}
+      </p>
+    </div>
   </div>
 </div>
