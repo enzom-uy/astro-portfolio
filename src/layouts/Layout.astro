@@ -1,11 +1,13 @@
 ---
+import Prompt from "@/components/Prompt.astro";
 import "@fontsource/jetbrains-mono";
 
 export interface Props {
   title: string;
   description: string;
+  promptText: string;
 }
-const { title, description } = Astro.props;
+const { title, description, promptText } = Astro.props;
 ---
 
 <html lang="en">
@@ -20,7 +22,8 @@ const { title, description } = Astro.props;
   <body
     class="font-sans bg-background text-foreground p-2 sm:p-6 text-sm sm:text-lg flex flex-col gap-4"
   >
-    <main class="min-h-[91vh]">
+    <Prompt animate showCursor command={promptText} />
+    <main class="min-h-[91vh] max-w-[80ch]">
       <slot />
     </main>
   </body>
@@ -51,6 +54,9 @@ const { title, description } = Astro.props;
     code {
       font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
         DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+    }
+    a {
+      width: fit-content;
     }
 
     @layer components {

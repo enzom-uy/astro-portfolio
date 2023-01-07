@@ -1,0 +1,26 @@
+---
+import type { Props as ProjectProps } from "@/components/Project.astro";
+
+export const projects: ProjectProps[] = [
+  {
+    title: "Old portfolio",
+    repo: "https://github.com/enzom-uy/portfolio",
+    website: "https://old-enzomdev.vercel.app",
+    techsSection:
+      "I used Typescript + Nextjs, ChakraUI, Framer Motion, Sanity.io, and Nodejs + Express.",
+    descSection: `Although this wasn't my first project, I've wanted to make my portfolio
+    since I started learning web development. For some time I thought about
+    doing my portfolio only when I had at least a few projects to show. Still,
+    after gaining some experience while working on my projects I got excited
+    about using all that new knowledge.`,
+  },
+  {
+    title: "Mylo utilities",
+    repo: "https://github.com/enzom-uy/mylo",
+    website: "https://mylo.vercel.app/",
+    descSection: `This is actually the first project I built to solve a problem. Mylo utilities is a website on which you (and, actually, anybody that logins) can upload nade utilities from the CS:GO video game.`,
+    techsSection:
+      "I used Typescript + Nextjs, ChakraUI, and MySQL with Prisma ORM.",
+  },
+];
+---

@@ -1,0 +1,27 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Link from "@/components/Link.astro";
+import Project from "@/components/Project.astro";
+import { projects } from "@/variables/projects.astro";
+---
+
+<Layout
+  title="enzom@enzomdev: projects"
+  description="Showcase of Enzo's projects."
+  promptText="glow projects.md"
+>
+  <Link href="/" text="-> Home" />
+  <ul class="flex flex-col gap-10">
+    {
+      projects.map((p) => (
+        <Project
+          website={p.website}
+          title={p.title}
+          repo={p.repo}
+          descSection={p.descSection}
+          techsSection={p.techsSection}
+        />
+      ))
+    }
+  </ul>
+</Layout>

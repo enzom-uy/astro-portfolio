@@ -7,8 +7,11 @@ import Skills from "@/components/Skills.astro";
 import Footer from "@/components/Footer.astro";
 ---
 
-<Layout title="enzom@enzomdev" description="Portfolio of Enzo Muñoz.">
-  <Prompt command="whoami" animate showCursor />
+<Layout
+  title="enzom@enzomdev"
+  description="Portfolio of Enzo Muñoz."
+  promptText="whoami"
+>
   <div id="content" class="flex flex-col gap-4">
     <Links />
     <WhoamiResponse />
