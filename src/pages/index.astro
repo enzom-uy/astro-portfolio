@@ -19,19 +19,52 @@ const allPosts = await getCollection("blog");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 const techStack: Record<string, string> = {
-  js: "JavaScript",
-  ts: "TypeScript",
+  javascript: "JavaScript",
+  typescript: "TypeScript",
   "node.js": "Node",
+  "nest.js": "Node",
   astro: "This site is built on astro",
   python: "Python",
   sql: "SQL",
   "claude-code": "Best tool ever",
   "next.js": "Next.js",
   aws: "AWS",
-  gcp: "GCP",
   docker: "Docker",
-  tf: "Terraform",
 };
+
+interface StackItem {
+    title: string
+    url: string
+    description: string
+}
+
+const stack: Array<StackItem> = [
+    {
+    title: "JavaScript",
+    url: "https://www.javascript.com/",
+    description: "Lord Ruler of the web (alongside php maybe)"
+    },
+    {
+    title: "TypeScript",
+    url: "https://www.typescriptlang.org/",
+    description: "usable JavaScript"
+    },
+    {
+    title: "Node.js",
+    url: "https://nodejs.org/",
+    description: "javascript but now in servers and APIs"
+    },
+    {
+    title: "Nest.js",
+    url: "https://nestjs.com/",
+    description: "java of Node.js"
+    },
+    {
+    title: "SQL",
+    url: "https://www.sql.com/",
+    description: "raw language for databases (orm better)"
+    },
+]
 
 const projects: Array<{
   title: string;
@@ -129,12 +162,12 @@ const projects: Array<{
                   aria-label="Tech stack"
                 >
                   {
-                    Object.keys(techStack).map((lang) => (
+                    stack.map((item) => (
                       <span
                         class="text-secondary hover:text-accent transition-colors"
-                        title={techStack[lang]}
+                        title={item.title}
                       >
-                        {lang}
+                        {item.title}
                       </span>
                     ))
                   }
