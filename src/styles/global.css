@@ -1,13 +1,12 @@
-@import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 
-@custom-variant dark (&:is(.dark *));
-
 html {
   font-size: 16px;
 }
+
+@custom-variant dark (&:is(.dark *));
 
 /* Theme CSS Custom Properties */
 :root {
