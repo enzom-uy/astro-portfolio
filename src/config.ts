@@ -1,8 +1,8 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = "Terminus";
-export const SITE_DESCRIPTION = "Astro template for developers";
+export const SITE_TITLE = "Enzo Muñoz - Portfolio";
+export const SITE_DESCRIPTION = "Little portfolio hoping to get hired some day";
 
 export interface NavLink {
   title: string;
@@ -26,9 +26,9 @@ export const NAV_LINKS: NavLink[] = [
     tooltip: "Posts and stuff",
   },
   {
-    title: "astro.build",
-    redirect: "https://astro.build",
-    tooltip: "A very interesting page",
+    title: "projects.md",
+    redirect: "/projects",
+    tooltip: "Showcase of my projects",
   },
 ];
 
@@ -42,13 +42,13 @@ export interface SocialLink {
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    platform: "twitter",
-    url: "https://twitter.com/ojoanalogo/",
+    platform: "linkedin",
+    url: "https://linkedin.com/in/enzomdev/",
     label: "X",
   },
   {
     platform: "github",
-    url: "https://github.com/ojoanalogo/",
+    url: "https://github.com/enzom-uy/",
     label: "Github",
   },
 ];
