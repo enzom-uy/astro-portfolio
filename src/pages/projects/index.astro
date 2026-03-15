@@ -26,9 +26,9 @@ const allProjectsByDate = sortMDByDate(allProjects);
             </div>
           </div>
         ) : (
-          <ul class="space-y-4 sm:space-y-2" role="list">
+          <ul class="space-y-4" role="list">
           {allProjectsByDate.map((post) => (
-            <li class="flex flex-col gap-x-2 sm:flex-row" role="listitem">
+            <li role="listitem">
               <ProjectPreview post={post} />
             </li>
           ))}

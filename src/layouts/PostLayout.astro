@@ -16,6 +16,7 @@ export interface Props {
   publishDate: Date;
   updatedDate?: string;
   heroImage?: ImageMetadata;
+  heroImageType?: "full" | "banner";
   readingTime?: string;
   tags?: string[];
   type?: string;
@@ -28,6 +29,7 @@ const {
   publishDate,
   updatedDate,
   heroImage,
+  heroImageType = "full",
   readingTime,
   tags,
   type,
@@ -48,10 +50,13 @@ const displayDate = dayjs(publishDate).format("LL");
     {
       heroImage && (
         <Picture
-          widths={[400, 800, 1200]}
+          widths={[400, 800, 1200, 1600]}
           src={heroImage}
           alt={title}
-          class="w-full mb-6 rounded-xl shadow-sm dark:shadow-md hover:shadow-md dark:hover:shadow-lg transition duration-300"
+          class:list={[
+            "w-full mb-6 rounded-xl shadow-sm dark:shadow-md hover:shadow-md dark:hover:shadow-lg transition duration-300",
+            heroImageType === "banner" ? "h-48 object-cover" : ""
+          ]}
         />
       )
     }

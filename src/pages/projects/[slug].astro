@@ -3,7 +3,7 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import readingTime from 'reading-time';
 import type { ProjectSchema } from '../../content/config';
 import PostLayout from '../../layouts/PostLayout.astro';
-import { getBlogImage } from '../../utils';
+import { getBlogImage, getProjectImage } from '../../utils';
 
 export async function getStaticPaths() {
     const postEntries = await getCollection('projects');
@@ -17,28 +17,29 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const post : ProjectSchema = entry.data;
+const project : ProjectSchema = entry.data;
 const { Content } = await entry.render();
 
 const stats = readingTime(entry.body || '');
 
 let heroImage;
-if (post.heroImage) {
-    heroImage = await getBlogImage(entry.slug, post?.heroImage);
+if (project.heroImage) {
+    heroImage = await getProjectImage(entry.slug, project?.heroImage);
 }
 
 ---
 
 <PostLayout
-    title={post.title}
-    description={post.description}
-    publishDate={post.publishDate}
-    updatedDate={post.updatedDate}
+    title={project.title}
+    description={project.description}
+    publishDate={project.publishDate}
+    updatedDate={project.updatedDate}
     heroImage={heroImage?.default}
+    heroImageType="banner"
     readingTime={stats.text}
-    tags={post.tags}
-    type={post.type}
-    stack={post.stack}
+    tags={project.tags}
+    type={project.type}
+    stack={project.stack}
 >
     <Content/>
 </PostLayout>

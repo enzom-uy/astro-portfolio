@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { Badge } from "@/components/ui/badge";
+import { getProjectImage } from "@/utils";
 
 interface Props {
   post: CollectionEntry<"projects">;
@@ -21,17 +22,37 @@ function getFormattedDate(date: string | number | Date) {
 const date = new Date(post.data.publishDate);
 const datetime = date.toISOString();
 const postDate = getFormattedDate(date);
-const { stack, type } = post.data;
+const { stack, type, heroImage } = post.data;
+
+let image;
+if (heroImage) {
+  try {
+    image = await getProjectImage(post.slug, heroImage);
+  } catch (e) {
+    // Image not found, continue without it
+  }
+}
 ---
 
-<div class="flex flex-row gap-2 items-center text-sm flex-wrap">
-  <time datetime={datetime} class="min-w-30">{postDate}</time>
-  <a class="hover:underline hover:text-accent" href={`/projects/${post.slug}/`}>
-    {post.data.title}
-  </a>
-  {type && <Badge variant="secondary">{type}</Badge>}
-  {stack && stack.slice(0, 3).map((item) => (
-    <Badge variant="outline">{item}</Badge>
-  ))}
-  {stack && stack.length > 3 && <Badge variant="outline">+{stack.length - 3}</Badge>}
+<div class="flex flex-col gap-2">
+  <div class="flex flex-row gap-3 items-center text-sm flex-wrap">
+    <time datetime={datetime} class="min-w-24">{postDate}</time>
+    <a class="hover:underline hover:text-accent" href={`/projects/${post.slug}/`}>
+      {post.data.title}
+    </a>
+    {type && <Badge variant="secondary">{type}</Badge>}
+    {stack && stack.slice(0, 3).map((item) => (
+      <Badge variant="outline">{item}</Badge>
+    ))}
+    {stack && stack.length > 3 && <Badge variant="outline">+{stack.length - 3}</Badge>}
+  </div>
+  {image && (
+    <a href={`/projects/${post.slug}/`} class="block">
+      <img 
+        src={image.default.src} 
+        alt={post.data.title}
+        class="w-full h-40 object-cover rounded-lg mt-1"
+      />
+    </a>
+  )}
 </div>

@@ -9,27 +9,35 @@ export function sortMDByDate<T extends CollectionEntry<"blog" | "projects">>(pos
   );
 }
 
-export function getBlogImage(slug: string, fileName: string) {
-  const filename = path.parse(fileName);
-  const name = filename.name;
-  const ext = filename.ext;
+export function getImage(slug: string, fileName: string, collection: "blog" | "projects" = "blog") {
+  const collectionPath = collection === "projects" ? "projects" : "blog";
+  const ext = path.extname(fileName);
+  const basename = path.basename(fileName, ext);
 
-  switch (ext) {
+  switch (ext.toLowerCase()) {
     case ".webp":
-      return import(`../content/blog/${slug}/${name}.webp`);
+      return import(`../content/${collectionPath}/${slug}/${basename}.webp`);
     case ".jpg":
-      return import(`../content/blog/${slug}/${name}.jpg`);
+      return import(`../content/${collectionPath}/${slug}/${basename}.jpg`);
     case ".png":
-      return import(`../content/blog/${slug}/${name}.png`);
+      return import(`../content/${collectionPath}/${slug}/${basename}.png`);
     case ".svg":
-      return import(`../content/blog/${slug}/${name}.svg`);
+      return import(`../content/${collectionPath}/${slug}/${basename}.svg`);
     case ".gif":
-      return import(`../content/blog/${slug}/${name}.gif`);
+      return import(`../content/${collectionPath}/${slug}/${basename}.gif`);
     case ".avif":
-      return import(`../content/blog/${slug}/${name}.avif`);
+      return import(`../content/${collectionPath}/${slug}/${basename}.avif`);
     case ".jpeg":
-      return import(`../content/blog/${slug}/${name}.jpeg`);
+      return import(`../content/${collectionPath}/${slug}/${basename}.jpeg`);
     default:
-      return import(`../content/blog/${slug}/${name}.jpg`);
+      return import(`../content/${collectionPath}/${slug}/${basename}.png`);
   }
+}
+
+export function getBlogImage(slug: string, fileName: string) {
+  return getImage(slug, fileName, "blog");
+}
+
+export function getProjectImage(slug: string, fileName: string) {
+  return getImage(slug, fileName, "projects");
 }

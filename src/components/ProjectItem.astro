@@ -25,7 +25,7 @@ const number = String(index + 1).padStart(2, "0");
         class="block focus:outline-none rounded"
         aria-label={`Visit ${title}: ${description}`}
       >
-        <div class="flex items-start gap-2 flex-wrap">
+        <div class="flex items-center gap-2 flex-wrap">
           <span class="text-muted w-6 shrink-0" aria-hidden="true">
             {number}.
           </span>
@@ -40,7 +40,7 @@ const number = String(index + 1).padStart(2, "0");
             <span class="text-secondary group-hover:text-accent font-semibold">
               {title}
             </span>
-            {type && <Badge variant="secondary" class="text-xs">{type}</Badge>}
+            {type && <Badge variant="secondary" className="text-xs">{type}</Badge>}
             <span class="text-muted">
               → {description}
             </span>

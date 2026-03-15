@@ -5,7 +5,7 @@ description: Simple website to extract quotes from images with Tesseract OCR.
 type: fullstack
 stack: [nestjs, astro, postgresql, supabase, tesseract]
 published: true
-# heroImage:
+heroImage: quoteskeeper.png
 ---
 
 # QuotesKeeper
