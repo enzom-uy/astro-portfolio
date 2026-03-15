@@ -27,7 +27,7 @@ export const NAV_LINKS: NavLink[] = [
   },
   {
     title: "projects.md",
-    redirect: "/projects",
+    url: "/projects",
     tooltip: "Showcase of my projects",
   },
 ];

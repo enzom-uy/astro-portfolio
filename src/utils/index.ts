@@ -1,7 +1,7 @@
 import type { CollectionEntry } from "astro:content";
 import path from "path";
 
-export function sortMDByDate(posts: CollectionEntry<"blog">[] = []) {
+export function sortMDByDate<T extends CollectionEntry<"blog" | "projects">>(posts: T[] = []) {
   return posts.sort(
     (a, b) =>
       new Date(b.data.publishDate).valueOf() -

@@ -1,30 +1,31 @@
 ---
+import { Badge } from "@/components/ui/badge";
+
 interface Props {
   title: string;
   description: string;
   link?: string;
   icon: string;
   index: number;
+  type?: string;
 }
 
-const { title, description, link, icon, index } = Astro.props;
+const { title, description, link, icon, index, type } = Astro.props;
 const number = String(index + 1).padStart(2, "0");
 ---
 
 <div
-  class="group hover:bg-gray-200/50 dark:hover:bg-gray-900/40 p-1 rounded transition-colors"
+  class="group p-1 rounded transition-colors"
   role="listitem"
 >
   {
     link ? (
       <a
         href={link}
-        target="_blank"
-        rel="noopener noreferrer"
         class="block focus:outline-none rounded"
         aria-label={`Visit ${title}: ${description}`}
       >
-        <div class="flex items-start gap-2">
+        <div class="flex items-start gap-2 flex-wrap">
           <span class="text-muted w-6 shrink-0" aria-hidden="true">
             {number}.
           </span>
@@ -35,11 +36,12 @@ const number = String(index + 1).padStart(2, "0");
           >
             {icon}
           </span>
-          <div class="min-w-0 flex-1">
-            <span class="text-secondary group-hover:text-accent font-semibold block sm:inline">
+          <div class="min-w-0 flex-1 flex items-center gap-2">
+            <span class="text-secondary group-hover:text-accent font-semibold">
               {title}
             </span>
-            <span class="text-muted sm:ml-2 block sm:inline mt-1 sm:mt-0">
+            {type && <Badge variant="secondary" class="text-xs">{type}</Badge>}
+            <span class="text-muted">
               → {description}
             </span>
           </div>

@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Badge } from "@/components/ui/badge";
+
+interface Props {
+  post: CollectionEntry<"projects">;
+}
+
+const { post } = Astro.props;
+
+const dateFormat = new Intl.DateTimeFormat("en-US", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+});
+
+function getFormattedDate(date: string | number | Date) {
+  return dateFormat.format(new Date(date));
+}
+
+const date = new Date(post.data.publishDate);
+const datetime = date.toISOString();
+const postDate = getFormattedDate(date);
+const { stack, type } = post.data;
+---
+
+<div class="flex flex-row gap-2 items-center text-sm flex-wrap">
+  <time datetime={datetime} class="min-w-30">{postDate}</time>
+  <a class="hover:underline hover:text-accent" href={`/projects/${post.slug}/`}>
+    {post.data.title}
+  </a>
+  {type && <Badge variant="secondary">{type}</Badge>}
+  {stack && stack.slice(0, 3).map((item) => (
+    <Badge variant="outline">{item}</Badge>
+  ))}
+  {stack && stack.length > 3 && <Badge variant="outline">+{stack.length - 3}</Badge>}
+</div>

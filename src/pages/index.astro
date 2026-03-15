@@ -15,9 +15,15 @@ import Divider from "../components/ui/Divider.astro";
 import PostList from "../components/ui/PostList.astro";
 import { TechStackItem, TechStackProvider } from "@/components/TechStackItem";
 
-const MAX_POSTS = 10;
+const MAX_POSTS = 5;
+const MAX_PROJECTS = 5;
 const allPosts = await getCollection("blog");
 const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+
+const allProjects = await getCollection("projects");
+const recentProjects = sortMDByDate(allProjects)
+  .filter(p => p.data.published !== false)
+  .slice(0, MAX_PROJECTS);
 
 interface StackItem {
   title: string;
@@ -51,26 +57,6 @@ const stack: Array<StackItem> = [
   },
 ];
 
-// TODO: handle projects with md in another route and get last 5 projects instead of hardcoding like this
-const projects: Array<{
-  title: string;
-  description: string;
-  link: string;
-  icon: string;
-}> = [
-  {
-    title: "terminus",
-    description: "a minimalist astro template for developers",
-    link: "https://github.com/ojoanalogo/terminus-astro-template",
-    icon: "💻",
-  },
-  {
-    title: "Another Project",
-    description: "Add your own projects here",
-    icon: "💻",
-    link: "",
-  },
-];
 ---
 
 <BaseLayout navbarActiveItemID="home">
@@ -179,20 +165,20 @@ const projects: Array<{
     <SectionHeading>💻 recent projects</SectionHeading>
     <div class="space-y-2" role="list">
       {
-        projects.map((project, index) => (
+        recentProjects.map((project, index) => (
           <ProjectItem
-            title={project.title}
-            description={project.description}
-            link={project.link}
-            icon={project.icon}
+            title={project.data.title}
+            description={project.data.description}
+            link={`/projects/${project.slug}/`}
+            icon="💻"
             index={index}
+            type={project.data.type}
           />
         ))
       }
     </div>
-    <TerminalPrompt command={`ls -la projects/ | total ${projects.length}`} />
+    <TerminalPrompt command={`ls -la projects/ | total ${recentProjects.length}`} />
   </Card>
-</BaseLayout>
 
 {
   allPosts.length > 0 && (
@@ -205,3 +191,5 @@ const projects: Array<{
     </section>
   )
 }
+</BaseLayout>
+
